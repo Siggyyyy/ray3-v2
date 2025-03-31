@@ -179,9 +179,6 @@ function updateCoverageHistogram() {
         });
     });
 
-    console.log("Labels for Histogram:", labels);
-    console.log("Data for Histogram:", data);
-
     const canvas = document.getElementById('coverage-histogram');
     if (!canvas) {
         console.error("Canvas element for coverage histogram not found.");
@@ -291,7 +288,7 @@ map.addControl(drawControl);
 function renderRegionCoverage() {
   if (regionLayer) map.removeLayer(regionLayer);
 
-  fetch('/Pages/regions.geojson')
+  fetch('./regions.geojson')
     .then(res => res.json())
     .then(geojsonData => {
       regionLayer = L.geoJSON(geojsonData, {
@@ -356,4 +353,3 @@ function addMarkersToMap(markerData) {
   renderRegionCoverage();
   handlePolygonVisibility();
 }
-
