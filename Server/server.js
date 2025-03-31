@@ -1,6 +1,6 @@
 const express = require('express');
 const axios = require('axios');
-const cors = require('cors');
+const cors = require('cors'); // Keep this import
 const https = require('https');
 
 const app = express();
@@ -41,10 +41,6 @@ app.post('/fetch-products', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch products', details: error.message });
     }
 });
-
-const cors = require('cors'); // Import CORS
-app.use(cors()); // Use CORS to allow cross-origin requests
-
 
 // Fetch Mission footprints
 app.post('/fetch-mission-footprints', async (req, res) => {
@@ -214,7 +210,6 @@ app.post("/get-scene-frames", async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 });
-
 
 // Start the server
 const PORT = process.env.PORT || 5000;
