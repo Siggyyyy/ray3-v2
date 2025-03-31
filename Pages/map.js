@@ -291,7 +291,7 @@ map.addControl(drawControl);
 function renderRegionCoverage() {
   if (regionLayer) map.removeLayer(regionLayer);
 
-  fetch('./regions.geojson')
+  fetch('/Pages/regions.geojson')
     .then(res => res.json())
     .then(geojsonData => {
       regionLayer = L.geoJSON(geojsonData, {
