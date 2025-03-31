@@ -4,13 +4,20 @@ const cors = require('cors'); // Keep this import
 const https = require('https');
 
 const app = express();
-app.use(cors());
+
+// CORS configuration to allow requests from your frontend (Netlify)
+const corsOptions = {
+    origin: 'https://wonderful-pasca-9656d5.netlify.app', // Replace with your Netlify URL
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+};
+app.use(cors(corsOptions)); // Use CORS with custom options
 app.use(express.json());
 
 // Serve static files from the Pages, CSS, Scripts, and data folders
 app.use(express.static('C:/Users/sigam/Documents/Application/Pages'));
 app.use('/css', express.static('C:/Users/sigam/Documents/Application/CSS'));
-app.use('/scripts', express.static('/Scripts'));
+app.use('/scripts', express.static('/Scripts')); // Make sure this path is correct
 app.use('/data', express.static('C:/Users/sigam/Documents/Application/data'));
 
 // Route to fetch products
