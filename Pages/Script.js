@@ -1,4 +1,8 @@
 // Collapsible Panels
+
+let londonCoords = [51.5074, -0.1278]; // Coordinates for London
+let currentSelection = null; // Correctly initialize currentSelection as null
+
 const missionMap = new L.map("mission-map-container", mapOptions);
 const missionMapTile = new L.TileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
 missionMap.addLayer(missionMapTile);
@@ -25,7 +29,7 @@ function togglePanel(panelId) {
     resizeMap();
 }
 
-//function to handle map resizing
+// Function to handle map resizing
 function resizeMap() {
     setTimeout(() => {
         map.invalidateSize(); // Ensure the map is resized properly
@@ -33,11 +37,10 @@ function resizeMap() {
     }, 300);
 }
 
-// Trying new UI stuffs
-let currentSelection = null;
-var mapContainer = document.getElementById("map-container");
-var missionMapContainer = document.getElementById("mission-map-container");
-var framesContainer = document.getElementById("frames-container");
+// Trying new UI stuff
+let mapContainer = document.getElementById("map-container");
+let missionMapContainer = document.getElementById("mission-map-container");
+let framesContainer = document.getElementById("frames-container");
 
 function selectTab(tabNumber) {
     // Remove the selected class from the previous element
@@ -55,7 +58,6 @@ function selectTab(tabNumber) {
     currentSelection = selectedTab;
     const cardContainers = document.querySelectorAll('.card-container'); 
     const elements = document.querySelectorAll('.more-stuff-box, .missions-stuff-box'); 
-
 
     // Add your JavaScript functions here to handle tab changes
     if (tabNumber === 1) {
@@ -80,7 +82,6 @@ function selectTab(tabNumber) {
         mapContainer.style.display = "none";
         missionMapContainer.style.display = "block";
         missionMap.setView([51.505, -0.09], 6); // Adjust this as needed
-        
 
         console.log('Mission Data selected');
 
@@ -92,6 +93,7 @@ function selectTab(tabNumber) {
     }
 }
 
+// Initialize the first tab
 currentSelection = document.querySelectorAll('.clickable')[0];
 currentSelection.classList.add('selected');
 togglePanel('item-3');

@@ -42,6 +42,10 @@ app.post('/fetch-products', async (req, res) => {
     }
 });
 
+const cors = require('cors'); // Import CORS
+app.use(cors()); // Use CORS to allow cross-origin requests
+
+
 // Fetch Mission footprints
 app.post('/fetch-mission-footprints', async (req, res) => {
     const { accessToken, missionIds } = req.body;
